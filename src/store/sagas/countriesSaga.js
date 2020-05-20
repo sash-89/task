@@ -31,6 +31,6 @@ function* countryImagesRequestWorker (action){
         yield put(setCountryImages(countryImages));
 
     } catch (e) {
-                throw e
+        throw e
     }
 }
