@@ -2,7 +2,6 @@ import {takeEvery, call, put, all} from "redux-saga/effects"
 import {countriesImageAPI} from "../../api/api";
 import {setCountriesImg, setCountryImages} from "../actions/countriesAction";
 import {takeLatest} from "@redux-saga/core/effects";
-// import {takeEvery, takeLatest, call, put, all} from "@redux-saga/core/effects";
 
 export function* rootSaga (){
     yield all( [countriesImgRequestWatcher(), countryImagesRequestWatcher()])
@@ -18,7 +17,7 @@ function* countriesImgRequestWorker (action){
         yield put(setCountriesImg(countryImg));
 
     } catch (e) {
-        // yield put({type: "BOOKS_FETCH_REQUESTED", message: e.message});
+        throw e
     }
 }
 function* countryImagesRequestWatcher (){
@@ -32,6 +31,6 @@ function* countryImagesRequestWorker (action){
         yield put(setCountryImages(countryImages));
 
     } catch (e) {
-        // yield put({type: "BOOKS_FETCH_REQUESTED", message: e.message});
+                throw e
     }
 }
